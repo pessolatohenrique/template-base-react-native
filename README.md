@@ -17,7 +17,7 @@ O template quando inicializado contém as seguintes bibliotecas:
 - Redux: arquitetura para gerenciar o estado global de aplicações react;
 - Redux Thunk: middleware para lógicas em redux;
 
-###Inicializando o projeto em múltiplos ambientes
+### Inicializando o projeto em múltiplos ambientes
 **Desenvolvimento**: `ENVFILE=.env react-native run-android`
 **Homologação**: `ENVFILE=.env react-native run-android`
 **Produção**: `ENVFILE=.env.production react-native run-android`
