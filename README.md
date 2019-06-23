@@ -1,9 +1,9 @@
 # Template base para react-native
 
-###Ideia do projeto
+### Ideia do projeto
 O propósito é criar uma template base para projetos react-native, que pode ser utilizada para diferentes cases.
 
-###Conteúdo
+### Conteúdo
 O template quando inicializado contém as seguintes bibliotecas:
 
 - React Native na versão 0.59.9 (e complementares, como o babel e jest);
@@ -25,6 +25,6 @@ O template quando inicializado contém as seguintes bibliotecas:
 Para o Windows acrescentar o _SET_ no comando, por exemplo:
 `SET ENVFILE=.env.production react-native run-android`
 
-###Instalação
+### Instalação
 Realizar o seguinte comando no prompt de comando do seu sistema operacional.
 `react-native init AwesomeExample --template templatebase`
