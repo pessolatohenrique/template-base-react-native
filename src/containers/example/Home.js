@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 export default class Home extends Component {
+  componentDidMount() {
+    const { title } = this.props;
+    console.tron.log('Olá mundo reactotron: ', title);
+  }
+
   render() {
     const { title } = this.props;
     return (
