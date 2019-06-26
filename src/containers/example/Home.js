@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
-import { View, Text } from 'react-native';
+// import { View, Text } from 'react-native';
+import {
+  Container, Header, Content, Card, CardItem, Text, Body,
+} from 'native-base';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
@@ -13,11 +16,20 @@ export default class Home extends Component {
   render() {
     const { title } = this.props;
     return (
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-      </View>
+      <Container padder>
+        <Content>
+          <Card>
+            <CardItem header>
+              <Text>{title}</Text>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Text>Your text here</Text>
+              </Body>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     );
   }
 }
