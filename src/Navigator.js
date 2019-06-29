@@ -4,48 +4,36 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from './containers/example/Home';
 
-// const HomeStack = createStackNavigator({
-//   Home: HomeScreen,
-//   Details: DetailsScreen,
-// });
-
-// const SettingsStack = createStackNavigator({
-//   Settings: SettingsScreen,
-//   Details: DetailsScreen,
-// });
-
-// export default createBottomTabNavigator(
-//   {
-//     Home: HomeStack,
-//     Settings: SettingsStack,
-//   },
-//   {
-//     /* Other configuration remains unchanged */
-//   }
-
 /**
  * cada página pode ter subpáginas.
  * por exemplo: um produto pode ter uma listagem, formulário, edição, etc
  * por este motivo, a divisão com stackNavigator e bottomTabs
  */
 const HomeStack = createStackNavigator({
-  Home: () => <Home title="Dashboard" />,
+  Home: {
+    screen: () => <Home title="Dashboard card" />,
+    navigationOptions: {
+      title: 'Dashboard',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#4db6ac',
+        fontWeight: 'normal',
+      },
+    },
+  },
+  // Details: DetailsScreen,
 });
 
-// const HomeStack = createStackNavigator({
-//   Dashboard: {
-//     name: 'Dashboard',
-//     screen: () => <Home title="Dashboard" />,
-//     navigationOptions: {
-//       title: 'Dashboard',
-//       header: { visible: true },
-//       // tabBarIcon: ({ tintColor }) => <Icon name="home" size={30} color={tintColor} />,
-//     },
-//   },
-// });
-
 const MenuRoutes = {
-  Dashboard: HomeStack,
+  Dashboard: {
+    name: 'Dashboard',
+    screen: HomeStack,
+    navigationOptions: {
+      title: 'Dashboard',
+      header: { visible: true },
+      tabBarIcon: ({ tintColor }) => <Icon name="home" size={30} color={tintColor} />,
+    },
+  },
   Add: {
     name: 'Tab2',
     screen: () => <Home title="Aba 02" />,
