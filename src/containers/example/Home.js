@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 
-// import { View, Text } from 'react-native';
 import {
-  Container, Header, Content, Card, CardItem, Text, Body,
+  Container, Content, Card, CardItem, Text, Body,
 } from 'native-base';
 import PropTypes from 'prop-types';
-import styles from './styles';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { connect } from 'react-redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { bindActionCreators } from 'redux';
 
-export default class Home extends Component {
+import { create } from '../../actions/product';
+
+class Home extends Component {
   componentDidMount() {
-    const { title } = this.props;
+    const { title, product, createProduct } = this.props;
+    createProduct({ id: Math.floor(Math.random() * 1000), name: 'Course of PHP 7.1' });
     console.tron.log('Olá mundo reactotron: ', title);
+    console.tron.log('Lista de produtos', product.list);
   }
 
   render() {
-    const { title } = this.props;
+    const { title, product } = this.props;
+    const { addedProduct } = product;
+
+    console.tron.log('Produto adicionado: ', addedProduct);
+
     return (
       <Container padder>
         <Content>
@@ -36,4 +46,17 @@ export default class Home extends Component {
 
 Home.propTypes = {
   title: PropTypes.string.isRequired,
+  product: PropTypes.object.isRequired,
+  createProduct: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = state => ({
+  product: state.product,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({ createProduct: create }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
