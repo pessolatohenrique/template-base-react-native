@@ -13,10 +13,9 @@ import { create } from '../../actions/product';
 
 class Home extends Component {
   componentDidMount() {
-    const { title, product, createProduct } = this.props;
-    createProduct({ id: Math.floor(Math.random() * 1000), name: 'Course of PHP 7.1' });
-    console.tron.log('Olá mundo reactotron: ', title);
-    console.tron.log('Lista de produtos', product.list);
+    const { product, createProduct } = this.props;
+    const { list } = product;
+    createProduct({ id: Math.floor(Math.random() * 1000), name: 'Course of PHP 7.1' }, list);
   }
 
   render() {
@@ -24,6 +23,7 @@ class Home extends Component {
     const { addedProduct } = product;
 
     console.tron.log('Produto adicionado: ', addedProduct);
+    console.tron.log('Lista de produtos', product.list);
 
     return (
       <Container padder>
