@@ -18,12 +18,12 @@ O template quando inicializado contém as seguintes bibliotecas:
 - Redux Thunk: middleware para lógicas em redux;
 
 ### Inicializando o projeto em múltiplos ambientes
-**Desenvolvimento**: `ENVFILE=.env react-native run-android`
-**Homologação**: `ENVFILE=.env react-native run-android`
-**Produção**: `ENVFILE=.env.production react-native run-android`
+**Desenvolvimento**: `ENVFILE=.env && react-native run-android`
+**Homologação**: `ENVFILE=.env && react-native run-android`
+**Produção**: `ENVFILE=.env.production && react-native run-android`
 
 Para o Windows acrescentar o _SET_ no comando, por exemplo:
-`SET ENVFILE=.env.production react-native run-android`
+`SET ENVFILE=.env.production && react-native run-android`
 
 ### Instalação
 Realizar o seguinte comando no prompt de comando do seu sistema operacional.

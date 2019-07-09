@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import {
   Container, Content, Card, CardItem, Text, Body,
@@ -8,6 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
+import { configureAxios } from '../../config/axios';
 
 import { create } from '../../actions/product';
 
@@ -16,6 +18,13 @@ class Home extends Component {
     const { product, createProduct } = this.props;
     const { list } = product;
     createProduct({ id: Math.floor(Math.random() * 1000), name: 'Course of PHP 7.1' }, list);
+
+    configureAxios();
+
+    axios
+      .get('/products')
+      .then(response => console.tron.log('Response', response))
+      .catch(error => console.tron.log('Error', error));
   }
 
   render() {
