@@ -3,6 +3,7 @@ import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from './containers/example/Home';
+import Register from './containers/form/Register';
 
 /**
  * cada página pode ter subpáginas.
@@ -14,6 +15,21 @@ const HomeStack = createStackNavigator({
     screen: () => <Home title="Dashboard card" />,
     navigationOptions: {
       title: 'Dashboard',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#4db6ac',
+        fontWeight: 'normal',
+      },
+    },
+  },
+  // Details: DetailsScreen,
+});
+
+const RegisterStack = createStackNavigator({
+  Home: {
+    screen: () => <Register />,
+    navigationOptions: {
+      title: 'Register',
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: '#4db6ac',
@@ -36,10 +52,10 @@ const MenuRoutes = {
   },
   Add: {
     name: 'Tab2',
-    screen: () => <Home title="Aba 02" />,
+    screen: RegisterStack,
     navigationOptions: {
-      title: 'Aba 02',
-      tabBarIcon: ({ tintColor }) => <Icon name="camera" size={30} color={tintColor} />,
+      title: 'Register',
+      tabBarIcon: ({ tintColor }) => <Icon name="user" size={30} color={tintColor} />,
     },
   },
   Profile: {
