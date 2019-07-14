@@ -19,7 +19,8 @@
     "react-native-config": "^0.11.7",
     "react-native-vector-icons": "^6.5.0",
     "react-navigation": "^2.14.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
