@@ -4,6 +4,7 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Home from './containers/example/Home';
 import Register from './containers/form/Register';
+import ListExample from './containers/exampleRealm/ListExample';
 
 /**
  * cada página pode ter subpáginas.
@@ -40,6 +41,21 @@ const RegisterStack = createStackNavigator({
   // Details: DetailsScreen,
 });
 
+const ListStack = createStackNavigator({
+  Home: {
+    screen: () => <ListExample />,
+    navigationOptions: {
+      title: 'List',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#4db6ac',
+        fontWeight: 'normal',
+      },
+    },
+  },
+  // Details: DetailsScreen,
+});
+
 const MenuRoutes = {
   Dashboard: {
     name: 'Dashboard',
@@ -58,12 +74,12 @@ const MenuRoutes = {
       tabBarIcon: ({ tintColor }) => <Icon name="user" size={30} color={tintColor} />,
     },
   },
-  Profile: {
+  List: {
     name: 'Tab3',
-    screen: () => <Home title="Aba 03" />,
+    screen: ListStack,
     navigationOptions: {
-      title: 'Aba 03',
-      tabBarIcon: ({ tintColor: color }) => <Icon name="user" size={30} color={color} />,
+      title: 'List',
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={30} color={tintColor} />,
     },
   },
 };
