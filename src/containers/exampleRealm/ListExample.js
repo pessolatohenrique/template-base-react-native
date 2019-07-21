@@ -12,31 +12,44 @@ import {
   Text,
 } from 'native-base';
 import FabExample from './FabExample';
-
-const data = [
-  {
-    id: 1,
-    name: 'React Native',
-    description: 'Utilizado para desenvolver apps mobile',
-    imageUrl: 'https://victorvhpg.github.io/minicurso-react.js/slides/img/logo.png',
-    category: 'Mobile',
-  },
-  {
-    id: 2,
-    name: 'React JS',
-    description: 'Utilizado para desenvolver interfaces web',
-    imageUrl: 'https://victorvhpg.github.io/minicurso-react.js/slides/img/logo.png',
-    category: 'Front',
-  },
-];
+import { getRealm } from '../../config/realm';
+import { createLanguages, addNewLanguage } from './Functions';
 
 class ListExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { realm: null };
+  }
+
+  async componentDidMount() {
+    const realm = await getRealm();
+    await createLanguages(realm);
+    this.setState({ realm });
+  }
+
+  create = async () => {
+    const realm = await getRealm();
+    await addNewLanguage(realm);
+    this.setState({ realm });
+  };
+
+  delete = async () => {
+    const realm = await getRealm();
+
+    realm.write(() => {
+      const allLanguages = realm.objects('Language');
+      realm.delete(allLanguages);
+    });
+
+    this.setState({ realm });
+  };
+
   renderLanguage = ({ item }) => (
     <ListItem avatar>
       <Left>
         <Thumbnail
           source={{
-            uri: item.imageUrl,
+            uri: item.image,
           }}
           small
         />
@@ -46,24 +59,26 @@ class ListExample extends Component {
         <Text note>{item.description}</Text>
       </Body>
       <Right>
-        <Text note>{item.category}</Text>
+        <Text note>{item.category.name}</Text>
       </Right>
     </ListItem>
   );
 
   render() {
+    const { realm } = this.state;
+
     return (
       <Container>
         <Content>
           <List>
             <FlatList
-              data={data}
+              data={realm ? realm.objects('Language').sorted('name') : []}
               keyExtractor={item => item.id.toString()}
               renderItem={this.renderLanguage}
             />
           </List>
         </Content>
-        <FabExample />
+        <FabExample onAdd={this.create} onDelete={this.delete} />
       </Container>
     );
   }

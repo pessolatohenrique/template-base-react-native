@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {
-  Fab, Button, Icon, View,
-} from 'native-base';
+import { Fab, View, Button } from 'native-base';
+import PropTypes from 'prop-types';
+
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class FabExample extends Component {
   constructor(props) {
@@ -13,8 +14,10 @@ class FabExample extends Component {
 
   render() {
     const { active } = this.state;
+    const { onAdd, onDelete } = this.props;
+
     return (
-      <View style={{ flex: 1 }}>
+      <View>
         <Fab
           active={active}
           direction="up"
@@ -23,15 +26,12 @@ class FabExample extends Component {
           position="bottomRight"
           onPress={() => this.setState({ active: !active })}
         >
-          <Icon name="share" />
-          <Button style={{ backgroundColor: '#34A34F' }}>
-            <Icon name="logo-whatsapp" />
+          <Icon name="toolbox" />
+          <Button style={{ backgroundColor: '#34A34F' }} onPress={onAdd}>
+            <Icon name="plus" color="white" />
           </Button>
-          <Button style={{ backgroundColor: '#3B5998' }}>
-            <Icon name="logo-facebook" />
-          </Button>
-          <Button disabled style={{ backgroundColor: '#DD5144' }}>
-            <Icon name="mail" />
+          <Button style={{ backgroundColor: '#DD5144' }} onPress={onDelete}>
+            <Icon name="trash" color="white" />
           </Button>
         </Fab>
       </View>
