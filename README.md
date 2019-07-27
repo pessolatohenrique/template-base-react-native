@@ -9,6 +9,7 @@ O template quando inicializado contém as seguintes bibliotecas:
 - React Native na versão 0.59.9 (e complementares, como o babel e jest);
 - Axios: cliente http baseado em promises, de modo a realizar chamadas para APIs;
 - Eslint: lint para boas práticas de formatação;
+- Formik: pacote com facilitadores de formulários, tais como componentes e validadores;
 - Native base: componentes de UI para react-native;
 - React Native Config: o objetivo é gerenciar as variáveis de ambiente, por exemplo para APIs de desenvolvimento, homologação e produção;
 - React Navigation: com o objetivo de criar rotas / navegação para o react-native. Para este projeto, foi utilizado o **tab navigation**;

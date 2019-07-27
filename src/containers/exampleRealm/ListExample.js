@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import FabExample from './FabExample';
 import { getRealm } from '../../config/realm';
 import { createLanguages, addNewLanguage, search as searchItens } from './Functions';
+import NotFound from '../../components/NotFound';
 
 class ListExample extends Component {
   constructor(props) {
@@ -83,6 +84,10 @@ class ListExample extends Component {
 
   render() {
     const { data } = this.state;
+
+    if (data && data.length === 0) {
+      return <NotFound />;
+    }
 
     return (
       <Container>
