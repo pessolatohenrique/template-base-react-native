@@ -127,4 +127,22 @@ const addNewLanguage = (realm) => {
   return realm;
 };
 
-export { createLanguages, addNewLanguage };
+/**
+ * realiza a pesquisa de itens, dentro de um array realm
+ * @param {Object} realm dados do banco de dados realm
+ * @param {String} text texto a ser procurado
+ * @return {Array} filteredItens itens encontrados
+ */
+const search = (realm, text) => {
+  const filteredItems = realm
+    .objects('Language')
+    .filtered(
+      'name CONTAINS[c] $0 OR description CONTAINS[c] $0 OR category.name CONTAINS[c] $0',
+      text,
+    )
+    .sorted('name');
+
+  return filteredItems;
+};
+
+export { createLanguages, addNewLanguage, search };

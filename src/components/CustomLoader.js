@@ -23,4 +23,8 @@ const CustomLoader = (props) => {
   );
 };
 
+CustomLoader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
+
 export default CustomLoader;

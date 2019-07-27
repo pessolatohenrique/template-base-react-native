@@ -10,27 +10,44 @@ import {
   Right,
   Thumbnail,
   Text,
+  Toast,
 } from 'native-base';
+import PropTypes from 'prop-types';
 import FabExample from './FabExample';
 import { getRealm } from '../../config/realm';
-import { createLanguages, addNewLanguage } from './Functions';
+import { createLanguages, addNewLanguage, search as searchItens } from './Functions';
 
 class ListExample extends Component {
   constructor(props) {
     super(props);
-    this.state = { realm: null };
+    this.state = { data: [] };
   }
 
   async componentDidMount() {
     const realm = await getRealm();
     await createLanguages(realm);
-    this.setState({ realm });
+    this.setState({ data: realm.objects('Language').sorted('name') });
   }
+
+  async componentDidUpdate(prevProps) {
+    const { navigation } = this.props;
+    if (prevProps.navigation !== navigation) {
+      const searchText = navigation.getParam('search');
+      this.search(searchText);
+    }
+  }
+
+  search = async (text) => {
+    const realm = await getRealm();
+    const filteredItems = searchItens(realm, text);
+
+    this.setState({ data: filteredItems.sorted('name') });
+  };
 
   create = async () => {
     const realm = await getRealm();
     await addNewLanguage(realm);
-    this.setState({ realm });
+    this.setState({ data: realm.objects('Language').sorted('name') });
   };
 
   delete = async () => {
@@ -41,7 +58,7 @@ class ListExample extends Component {
       realm.delete(allLanguages);
     });
 
-    this.setState({ realm });
+    this.setState({ data: realm.objects('Language').sorted('name') });
   };
 
   renderLanguage = ({ item }) => (
@@ -65,16 +82,25 @@ class ListExample extends Component {
   );
 
   render() {
-    const { realm } = this.state;
+    const { data } = this.state;
 
     return (
       <Container>
         <Content>
           <List>
             <FlatList
-              data={realm ? realm.objects('Language').sorted('name') : []}
+              data={data}
               keyExtractor={item => item.id.toString()}
               renderItem={this.renderLanguage}
+              onRefresh={() => {
+                Toast.show({
+                  text: 'Atualizado com sucesso!',
+                  buttonText: 'Okay',
+                  duration: 3000,
+                  type: 'success',
+                });
+              }}
+              refreshing={false}
             />
           </List>
         </Content>
@@ -83,5 +109,9 @@ class ListExample extends Component {
     );
   }
 }
+
+ListExample.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default ListExample;

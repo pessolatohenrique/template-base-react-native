@@ -2,9 +2,11 @@
 import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import commonStyle from './utils/commonStyle';
 import Home from './containers/example/Home';
 import Register from './containers/form/Register';
 import ListExample from './containers/exampleRealm/ListExample';
+import CustomHeader from './components/CustomHeader';
 
 /**
  * cada página pode ter subpáginas.
@@ -17,10 +19,7 @@ const HomeStack = createStackNavigator({
     navigationOptions: {
       title: 'Dashboard',
       headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#4db6ac',
-        fontWeight: 'normal',
-      },
+      headerStyle: commonStyle.header,
     },
   },
   // Details: DetailsScreen,
@@ -32,10 +31,7 @@ const RegisterStack = createStackNavigator({
     navigationOptions: {
       title: 'Register',
       headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#4db6ac',
-        fontWeight: 'normal',
-      },
+      headerStyle: commonStyle.header,
     },
   },
   // Details: DetailsScreen,
@@ -43,15 +39,13 @@ const RegisterStack = createStackNavigator({
 
 const ListStack = createStackNavigator({
   Home: {
-    screen: () => <ListExample />,
-    navigationOptions: {
+    screen: ({ navigation }) => <ListExample navigation={navigation} />,
+    navigationOptions: ({ navigation }) => ({
       title: 'List',
+      headerTitle: <CustomHeader title="List" navigation={navigation} />,
       headerTintColor: '#fff',
-      headerStyle: {
-        backgroundColor: '#4db6ac',
-        fontWeight: 'normal',
-      },
-    },
+      headerStyle: commonStyle.header,
+    }),
   },
   // Details: DetailsScreen,
 });
@@ -79,6 +73,7 @@ const MenuRoutes = {
     screen: ListStack,
     navigationOptions: {
       title: 'List',
+      // headerTitle: <CustomHeader />,
       tabBarIcon: ({ tintColor }) => <Icon name="list" size={30} color={tintColor} />,
     },
   },
