@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import {
-  Container, Content, Card, CardItem, Text, Body,
+  Container, Content, Card, CardItem, Text, Body, View,
 } from 'native-base';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -16,6 +16,7 @@ import { configureAxios } from '../../config/axios';
 
 import { create } from '../../actions/product';
 import LineChartComponent from '../../components/LineChartComponent';
+import styles from './styles';
 
 class Home extends Component {
   componentDidMount() {
@@ -41,6 +42,39 @@ class Home extends Component {
     return (
       <Container>
         <Content padder>
+          <View style={[commonStyle.containerRow, commonStyle.priorirty]}>
+            <View style={styles.indicatorView}>
+              <Card>
+                <CardItem>
+                  <Text style={styles.indicatorText}>100</Text>
+                  <Text note style={styles.indicatorSubtitle}>
+                    sales
+                  </Text>
+                </CardItem>
+              </Card>
+            </View>
+
+            <View style={styles.indicatorView}>
+              <Card>
+                <CardItem>
+                  <Text style={styles.indicatorText}>50</Text>
+                  <Text note style={styles.indicatorSubtitle}>
+                    products
+                  </Text>
+                </CardItem>
+              </Card>
+            </View>
+          </View>
+
+          <Card>
+            <CardItem>
+              <Text style={styles.indicatorText}>Good job!</Text>
+              <Text note style={styles.indicatorSubtitle}>
+                The final result was $ 4091,90
+              </Text>
+            </CardItem>
+          </Card>
+
           <Card>
             <CardItem header bordered>
               <Text style={commonStyle.colorTheme}>Pie chart example</Text>

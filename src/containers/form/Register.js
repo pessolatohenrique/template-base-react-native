@@ -1,15 +1,6 @@
 import React from 'react';
 import {
-  Container,
-  Content,
-  Form,
-  Item,
-  Input,
-  Label,
-  Text,
-  Button,
-  Icon,
-  View,
+  Container, Content, Form, Item, Input, Label, Text, Button,
 } from 'native-base';
 import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
@@ -25,7 +16,7 @@ const FormComponent = (props) => {
   const { username, password } = values;
   return (
     <Container>
-      <Content>
+      <Content padder>
         <CustomLoader isLoading={isSubmitting} />
         <Form>
           <Item stackedLabel>
@@ -54,11 +45,12 @@ const FormComponent = (props) => {
   );
 };
 
-PropTypes.FormComponent = {
-  values: PropTypes.object,
-  setFieldValue: PropTypes.function,
-  handleSubmit: PropTypes.function,
-  isSubmitting: PropTypes.function,
+FormComponent.propTypes = {
+  values: PropTypes.object.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 export default withFormik({
