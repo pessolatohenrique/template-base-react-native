@@ -9,9 +9,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { bindActionCreators } from 'redux';
+import PieChartComponent from '../../components/PieChartComponent';
+import BarChartComponent from '../../components/BarChartComponent';
+import commonStyle from '../../utils/commonStyle';
 import { configureAxios } from '../../config/axios';
 
 import { create } from '../../actions/product';
+import LineChartComponent from '../../components/LineChartComponent';
 
 class Home extends Component {
   componentDidMount() {
@@ -28,22 +32,69 @@ class Home extends Component {
   }
 
   render() {
-    const { title, product } = this.props;
+    const { product } = this.props;
     const { addedProduct } = product;
 
     console.tron.log('Produto adicionado: ', addedProduct);
     console.tron.log('Lista de produtos', product.list);
 
     return (
-      <Container padder>
-        <Content>
+      <Container>
+        <Content padder>
           <Card>
-            <CardItem header>
-              <Text>{title}</Text>
+            <CardItem header bordered>
+              <Text style={commonStyle.colorTheme}>Pie chart example</Text>
             </CardItem>
-            <CardItem>
+            <CardItem bordered>
               <Body>
-                <Text>Your text here</Text>
+                <PieChartComponent
+                  isPorcentage
+                  data={[
+                    { name: 'January', value: 50 },
+                    { name: 'February', value: 100 },
+                    { name: 'March', value: 230 },
+                    { name: 'April', value: 280 },
+                    { name: 'May', value: 210 },
+                  ]}
+                />
+              </Body>
+            </CardItem>
+          </Card>
+
+          <Card>
+            <CardItem header bordered>
+              <Text style={commonStyle.colorTheme}>Bar chart example</Text>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+                <BarChartComponent
+                  data={[
+                    { name: 'January', value: 50 },
+                    { name: 'February', value: 100 },
+                    { name: 'March', value: 230 },
+                    { name: 'April', value: 280 },
+                    { name: 'May', value: 210 },
+                  ]}
+                />
+              </Body>
+            </CardItem>
+          </Card>
+
+          <Card>
+            <CardItem header bordered>
+              <Text style={commonStyle.colorTheme}>Line chart example</Text>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+                <LineChartComponent
+                  data={[
+                    { name: 'January', value: 50 },
+                    { name: 'February', value: 100 },
+                    { name: 'March', value: 230 },
+                    { name: 'April', value: 280 },
+                    { name: 'May', value: 210 },
+                  ]}
+                />
               </Body>
             </CardItem>
           </Card>
@@ -54,7 +105,6 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  title: PropTypes.string.isRequired,
   product: PropTypes.object.isRequired,
   createProduct: PropTypes.func.isRequired,
 };
