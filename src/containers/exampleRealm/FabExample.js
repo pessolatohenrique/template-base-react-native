@@ -39,4 +39,9 @@ class FabExample extends Component {
   }
 }
 
+FabExample.propTypes = {
+  onAdd: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
 export default FabExample;

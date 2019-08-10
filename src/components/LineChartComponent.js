@@ -36,7 +36,7 @@ class LineChartComponent extends React.Component {
     return (
       <LineChart
         data={dataMaped}
-        width={Dimensions.get('window').width} // from react-native
+        width={Dimensions.get('window').width - 50} // from react-native
         height={220}
         // yAxisLabel={'$'}
         chartConfig={{

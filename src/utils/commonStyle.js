@@ -28,6 +28,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerRowCenter: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   containerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
