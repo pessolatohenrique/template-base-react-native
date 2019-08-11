@@ -3,6 +3,7 @@
 ### Ideia do projeto
 
 O propósito é criar uma template base para projetos react-native, que pode ser utilizada para diferentes cases.
+A template inclui autenticação, gerenciamento de formulários, redux, tratamento de dados offline, variáveis de ambiente, entre outros.
 
 ### Conteúdo
 
@@ -15,8 +16,9 @@ O template quando inicializado contém as seguintes bibliotecas:
 - Native base: componentes de UI para react-native;
 - React Native chart kit: biblioteca contendo diferentes tipos de gráfico;
 - React Native Config: o objetivo é gerenciar as variáveis de ambiente, por exemplo para APIs de desenvolvimento, homologação e produção;
-- React Navigation: com o objetivo de criar rotas / navegação para o react-native. Para este projeto, foi utilizado o **tab navigation**;
+- React Navigation: com o objetivo de criar rotas / navegação para o react-native. Para este projeto, foram utilizados: **tab navigation**, **stack navigation** e **switch navigation**;
 - React Native Vector Icons: pacote de icones. Inclui ícones do Font Awesome e Material Icons, por exemplo;
+- Reactotron: o objetivo é inspecionar apps para react e react-native;
 - Realm database: gerenciar base de dados do app, de modo a permitir o funcionamento offline;
 - Redux: arquitetura para gerenciar o estado global de aplicações react;
 - Redux Thunk: middleware para lógicas em redux;
@@ -33,4 +35,19 @@ Para o Windows acrescentar o _SET_ no comando, por exemplo:
 ### Instalação
 
 Realizar o seguinte comando no prompt de comando do seu sistema operacional.
-`react-native init AwesomeExample --template templatebase`
+`react-native init AwesomeExample --version="0.59.9" --template peanut-app-template`
+
+### Exemplos
+
+![Dashboard](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/01dashboard.png?raw=true&s=300 "Dashboard")
+![Dashboard](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/02dashboard.png?raw=true "Dashboard")
+![Dashboard](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/03dashboard.png?raw=true "Dashboard")
+![Dashboard](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/04dashboard.png?raw=true "Dashboard")
+![Formulário com formik](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/05form.png?raw=true "Formulário com formik")
+![Listagem offline](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/06realm.png?raw=true "Listagem offline")
+![Listagem offline](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/07realm.png?raw=true "Listagem offline")
+![Busca por categoria offline](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/08realm.png?raw=true "Busca por categoria offline")
+![Busca por nome offline](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/09realm.png?raw=true "Busca por nome offline")
+!["Busca sem resultados](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/10notfound.png?raw=true "Busca sem resultados")
+![Logout](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/11logout.png?raw=true "Logout")
+![Login](https://raw.githubusercontent.com/pessolatohenrique/template-base-react-native/feature/publish-template/examples/12login.png?raw=true "Login")
