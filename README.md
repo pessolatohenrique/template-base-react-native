@@ -39,7 +39,7 @@ Realizar o seguinte comando no prompt de comando do seu sistema operacional.
 
 ### Exemplos
 
-![Dashboard](examples/01dashboard.png?raw=true "Dashboard"){:width="300px"}
+![Dashboard](examples/01dashboard.png?raw=true&s=300 "Dashboard")
 ![Dashboard](examples/02dashboard.png?raw=true "Dashboard")
 ![Dashboard](examples/03dashboard.png?raw=true "Dashboard")
 ![Dashboard](examples/04dashboard.png?raw=true "Dashboard")
